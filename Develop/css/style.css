@@ -1,0 +1,88 @@
+body {
+    font-family: sans-serif;
+}
+
+button {
+    margin-top: 7px;
+    margin-bottom: 7px;
+}
+
+h2 {
+    font-size: 17px;
+    text-align: center;
+}
+
+label {
+    font-weight: bold;
+}
+
+input {
+    margin-top: 7px;
+}
+
+ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.allFive{
+    display:inline-block;
+    border:1px solid lightgrey;
+    background-color: lightgrey;
+    width:17%;
+}
+
+.header {
+    text-align: center;
+    background-color: blue;
+    color: white;
+    padding: 5px;
+    margin-bottom: 2%;
+}
+
+.left-bottom {
+    margin-left: 3%;
+    margin-right: 3%;
+    text-align: center;
+    background-color: white;
+    padding: 7px;
+    display: block;
+    height: 650px;
+    width: 175px;
+    float: left;
+}
+
+.left-top {
+    margin-top: 3%;
+    margin-left: 3%;
+    margin-right: 3%;
+    text-align: center;
+    background-color: white;
+    padding: 7px;
+    display: block;
+    height: 100px;
+    width: 175px;
+    float: left;
+}
+
+.right-bottom {
+    margin-top:1%;
+    text-align: center;
+    background-color: white;
+    padding: 7px;
+    display: inline-block;
+    height: 650px;
+    border: 1px solid blue;
+    width: 75%;
+}
+
+.right-top {
+    margin-top:1%;
+    text-align: center;
+    background-color: white;
+    padding: 7px;
+    display: inline-block;
+    height: 150px;
+    border: 1px solid blue;
+    width: 75%;
+}

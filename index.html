@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" link href="./Develop/css/style.css">
+    <title>Weather Dashboard</title>
+</head>
+
+<body>
+    <div class="header">
+        <h1>Weather Dashboard</h1>
+    </div>
+    <div class="left-top">
+        <form>
+            <label for="exactCity">Insert Exact City Name:</label><br>
+            <input type="text" id="exactCity" name="exactCity" placeholder="Exact City Name">
+        </form>
+        <button id="search">Search</button>
+        <hr>
+    </div>
+    <div class="right-top">
+        <h2>Selected City Here <span id="icon">+  icon here</span></h2>
+       
+        <ul id="properties">
+            <li>Temperature:<span id="fahrenheit">[-]°F</span></li>
+            <li>Wind:<span id="mph">MPH</span>[-] MPH</li>
+            <li>Humidity:<span id="percent">[-] %</span></li>
+            <li>UV Index<span id="decimal">[-]</span></li>
+        </ul>
+    </div>
+    <div class="left-bottom">
+        <h2>Search History Here</h2>
+        <ul id="searchHistory">
+        </ul>
+    </div>
+    <div class="right-bottom">
+        <h3>5-Day Forecast Here</h3>
+        <ul id="forecast">
+            <li class="allFive" id="dayOne">Day 1</li>
+            <li class="allFive" id="dayTwo">Day 2</li>
+            <li class="allFive" id="dayThree">Day 3</li>
+            <li class="allFive" id="dayFour">Day 4</li>
+            <li class="allFive" id="dayFive">Day 5</li>
+        </ul>
+    </div>
+    <script src="./Develop/script.js"></script>
+</body>
+
+</html>
