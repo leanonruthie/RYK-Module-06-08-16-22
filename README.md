@@ -15,9 +15,7 @@ GIVEN a simple input field
 WHEN I insert an exact city name
 THEN I am able to browse its current weather followed by its 5-day forecast 
 WHEN I view information like temperature, the humidity, the wind speed, and the UV index
-THEN I can specifically focus on the the temperature, the humidity, the wind speed, and the UV index
-WHEN I view the UV index
-THEN it changes color depending on the condition
+THEN the UV index changes color depending on the condition
 WHEN I view the search history
 THEN I can click on any of the past buttons to see their current condition followed by 5-day forecast
 ```

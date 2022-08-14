@@ -20,10 +20,11 @@
         </form>
         <button id="search">Search</button>
         <hr>
-        <h2>Search History Here</h2>
+        <h3>Search History Here</h3>
     </section>
     <section class="right-top">
-        <h2 id="currentCity">Your selected city will show here</h2>
+        <h2 id="currentCity">Today's Weather Info for Selected City</h2>
+        <h3 id="today">[Today's Date]</h3>
         <img id="icon" src=""/> 
         <ul id="properties">
             <li>Temperature: <span id="fahrenheit">[TBA]</span></li>
@@ -34,14 +35,15 @@
     </section>
    
     <section class="right-bottom">
-        <h3>5-Day Forecast Here</h3>
-        <ul id="forecast">
-            <li class="allFive" id="day1">Day 1</li>
-            <li class="allFive" id="day2">Day 2</li>
-            <li class="allFive" id="day3">Day 3</li>
-            <li class="allFive" id="day4">Day 4</li>
-            <li class="allFive" id="day5">Day 5</li>
+        <h2>5-Day Forecast:</h2>
+        <ul class="forecast">
+            <li><span class="forecast-day"></span></li>
+            <img class="icons" src=""/> 
+            <li><span class="forecast-temp"></span></li>
+            <li><span class="forecast-windspeed"></span></li>
+            <li><span class="forecast-humidity"></span></li>
         </ul>
+        
     </section>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>

@@ -10,11 +10,11 @@ document.getElementById("search").addEventListener("click", () => {
     var city = document.getElementById("exactCity").value;
 
     // double check the input is grabbed
-    console.log(city); 
+    console.log(city);
 
     // This doc doesn't have autocomplete or anything so upon searching exact city name it will grab ONE appropriate city result for now set in limit=1
     var queryURL = "http://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=1&appid=" + APIKey;
-    
+
     // What we learned and been using to fetch data from the above URL
     fetch(queryURL)
         .then((response) => response.json())
@@ -33,43 +33,55 @@ document.getElementById("search").addEventListener("click", () => {
 
                     // double check if the info appears
                     console.log(data);
-                    document.getElementById("weatherInfo").style.display = "inline-block";
+
                     // grab input and make sure it's in uppercase for aesthetic purposes
                     document.getElementById("currentCity").innerText = city.toUpperCase();
 
                     // Tutor taught me to use string interpolation for the icon here
                     var iconUrl = `https://openweathermap.org/img/w/${data.current.weather[0].icon}.png`
                     document.getElementById("icon").src = iconUrl;
-                
+
+                    // moment().format() was returning the wrong date; asked around class and got this hint and linked to moment.js in html
+                    document.getElementById("today").innerText = moment.unix(data.current.dt).format("MM/DD/YYYY");
+
                     // grab other necessary info and replace it in respective span id and make sure it's all uppercase for aesthetic purposes
                     document.getElementById("fahrenheit").innerText = data.current.temp + " °F";
                     document.getElementById("mph").innerText = data.current.wind_speed + " mph";
                     document.getElementById("percent").innerText = data.current.humidity + " %";
                     document.getElementById("decimal").innerText = data.current.uvi;
-                    for(i=0; i<5; i++){
-                        const x = createWeatherHTML(data.daily[i].temp.day, data.daily[i].wind_speed, data.daily[i].humidity)
-                        document.getElementById("day"+i).appendChild(x)
-                    }    
+
+                    // create a loop in which these items will be grabbed until the 5th day
+                    // for (i = 0; i < 5; i++) {
+                        // var iconUrl = `https://openweathermap.org/img/w/${data.current.weather[0].icon}.png`
+                        // document.querySelectorAll(".icons").src = iconUrl;
+                        // document.querySelectorAll(".forecast-day").innerText = moment.unix(data.daily[i].dt).format("MM/DD/YYYY");
+                        // document.querySelectorAll(".forecast-temp").innerText = "Temperature: "+ data.daily[i].temp + " °F";
+                        // document.querySelectorAll(".forecast-windspeed").innerText = "Wind: " + data.daily[i].wind_speed + " mph";
+                        // document.querySelectorAll(".forecast-humidity").innerText = "Humidity: "+ data.daily[i].humidity + " %";
+
+                    // const x = createWeatherHTML(data.daily[i].temp.day, data.daily[i].wind_speed, data.daily[i].humidity)
+                    //     document.getElementById("day" + i).appendChild(x)
+                    // }
 
                 });
         });
 })
 
 // creating a function that will be used inside the function above with the help of tutor 
-function createWeatherHTML(temp, wind, humidity) {
+// function createWeatherHTML(temp, wind, humidity) {
 
-    const ul = document.createElement("ul");
-    const liTemp = document.createElement("li");
-    const liWind = document.createElement("li");
-    const liHumidity = document.createElement("li");
+//     const ul = document.createElement("ul");
+//     const liTemp = document.createElement("li");
+//     const liWind = document.createElement("li");
+//     const liHumidity = document.createElement("li");
 
-    liTemp.innerText=temp;
-    liWind.innerText=wind;
-    liHumidity.innerText=humidity;
+//     liTemp.innerText = temp;
+//     liWind.innerText = wind;
+//     liHumidity.innerText = humidity;
 
-    ul.appendChild(liTemp);
-    ul.appendChild(liWind);
-    ul.appendChild(liHumidity);
+//     ul.appendChild(liTemp);
+//     ul.appendChild(liWind);
+//     ul.appendChild(liHumidity);
 
-    return ul;
-}
+//     return ul;
+// }

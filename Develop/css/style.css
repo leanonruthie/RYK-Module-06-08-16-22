@@ -8,6 +8,11 @@ button {
 }
 
 h2 {
+    font-size: 27px;
+    text-align: center;
+}
+
+h3 {
     font-size: 17px;
     text-align: center;
 }
@@ -25,11 +30,12 @@ ul {
     padding-left: 0;
 }
 
-.allFive{
+.forecast{
     display:inline-block;
-    border:1px solid lightgrey;
-    background-color: lightgrey;
+    background-color: lightsteelblue;
     width:17%;
+    height:300px;
+    border: 1px solid blue;
 }
 
 .header {
@@ -76,3 +82,4 @@ ul {
     border: 1px solid blue;
     width: 75%;
 }
+
