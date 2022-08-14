@@ -15,20 +15,20 @@
     </div>
     <div class="left-top">
         <form>
-            <label for="exactCity">Insert Exact City Name:</label><br>
+            <label for="exactCity">Exact City Name:</label><br>
             <input type="text" id="exactCity" name="exactCity" placeholder="Exact City Name">
         </form>
         <button id="search">Search</button>
         <hr>
     </div>
     <div class="right-top">
-        <h2>Selected City Here <span id="icon">+  icon here</span></h2>
-       
+        <h2 id="currentCity">The city you selected and<span id="icon"> its icon will appear here!</img></h2>
+        
         <ul id="properties">
-            <li>Temperature:<span id="fahrenheit">[-]°F</span></li>
-            <li>Wind:<span id="mph">MPH</span>[-] MPH</li>
-            <li>Humidity:<span id="percent">[-] %</span></li>
-            <li>UV Index<span id="decimal">[-]</span></li>
+            <li>Temperature: <span id="fahrenheit">[TBA]</span></li>
+            <li>Wind: <span id="mph">[TBA]</span></li>
+            <li>Humidity: <span id="percent">[TBA]</span></li>
+            <li>UV Index: <span id="decimal">[TBA]</span></li>
         </ul>
     </div>
     <div class="left-bottom">
@@ -46,6 +46,8 @@
             <li class="allFive" id="dayFive">Day 5</li>
         </ul>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="./Develop/script.js"></script>
 </body>
 
