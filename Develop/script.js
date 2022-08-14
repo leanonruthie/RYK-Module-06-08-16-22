@@ -4,10 +4,10 @@ const APIKey = "11d1e6ff7e13f1978dedaf38b5bb0ab6"
 // What happens when we click search after putting exact city name?
 
 // Clicking search button runs the below function
-$("#search").on("click", () => {
+document.getElementById("search").addEventListener("click", () => { 
 
         // this is the input being searched
-        var city = $("#exactCity").value;
+        var city = document.getElementById("exactCity").value;
 
         // double check the input is grabbed
         console.log(city); //Why is it undefined?
@@ -33,20 +33,22 @@ $("#search").on("click", () => {
 
                         // double check if the info appears
                         console.log(data);
-
+                        document.getElementById("weatherInfo").style.display="inline-block";
                         // grab input and make sure it's in uppercase for aesthetic purposes
-                        $("#currentCity").textContent = city.toUpperCase();
+                        document.getElementById("currentCity").innerText = city.toUpperCase();
 
                         // grab other necessary info and replace it in respective span id and make sure it's all uppercase for aesthetic purposes
-                        // how can grab icon?
+                        var iconUrl = `https://openweathermap.org/img/w/${data.current.weather[0].icon}.png`;
+                        console.log(document.getElementById("icon"));
+                        document.getElementById("icon").src=iconUrl;
                         console.log(data.current.temp);
-                        $("#fahrenheit").textContent = data.current.temp + " °F";
-                        console.log(data.current.wind);
-                        $("#mph").textContent = data.current.wind_speed + " mph";
+                        document.getElementById("fahrenheit").innerText = data.current.temp + " °F";
+                        console.log(data.current.wind_speed);
+                        document.getElementById("mph").innerText = data.current.wind_speed + " mph";
                         console.log(data.current.humidity);
-                        $("#percent").textContent = data.current.humidity + " %";
+                        document.getElementById("percent").innerText = data.current.humidity + " %";
                         console.log(data.current.uvi);
-                        $("#decimal").textContent = data.current.uvi;
+                        document.getElementById("decimal").innerText = data.current.uvi;
                     });
             });
     })

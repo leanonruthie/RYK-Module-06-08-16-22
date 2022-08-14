@@ -40,10 +40,6 @@ ul {
     margin-bottom: 2%;
 }
 
-#icon{
-    height:38px;
-}
-
 .left-bottom {
     margin-left: 3%;
     margin-right: 3%;
@@ -89,4 +85,8 @@ ul {
     height: 150px;
     border: 1px solid blue;
     width: 75%;
+}
+
+#weatherInfo{
+    display: none;
 }
