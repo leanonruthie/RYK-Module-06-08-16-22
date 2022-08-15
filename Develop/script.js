@@ -8,7 +8,7 @@ document.getElementById("search").addEventListener("click", () => {
 
     // this is the input being searched
     var city = document.getElementById("exactCity").value;
-
+    saveSearch(city);
     // double check the input is grabbed
     console.log(city);
 
@@ -46,42 +46,64 @@ document.getElementById("search").addEventListener("click", () => {
 
                     // grab other necessary info and replace it in respective span id and make sure it's all uppercase for aesthetic purposes
                     document.getElementById("fahrenheit").innerText = data.current.temp + " °F";
-                    document.getElementById("mph").innerText = data.current.wind_speed + " mph";
+                    document.getElementById("mph").innerText = data.current.wind_speed + " MPH";
                     document.getElementById("percent").innerText = data.current.humidity + " %";
                     document.getElementById("decimal").innerText = data.current.uvi;
 
                     // create a loop in which these items will be grabbed until the 5th day
-                    // for (i = 0; i < 5; i++) {
-                        // var iconUrl = `https://openweathermap.org/img/w/${data.current.weather[0].icon}.png`
-                        // document.querySelectorAll(".icons").src = iconUrl;
-                        // document.querySelectorAll(".forecast-day").innerText = moment.unix(data.daily[i].dt).format("MM/DD/YYYY");
-                        // document.querySelectorAll(".forecast-temp").innerText = "Temperature: "+ data.daily[i].temp + " °F";
-                        // document.querySelectorAll(".forecast-windspeed").innerText = "Wind: " + data.daily[i].wind_speed + " mph";
-                        // document.querySelectorAll(".forecast-humidity").innerText = "Humidity: "+ data.daily[i].humidity + " %";
-
-                    // const x = createWeatherHTML(data.daily[i].temp.day, data.daily[i].wind_speed, data.daily[i].humidity)
-                    //     document.getElementById("day" + i).appendChild(x)
-                    // }
+                    for (i = 0; i < 5; i++) {
+                        var date = moment.unix(data.daily[i].dt).format("MM/DD/YYYY");
+                        var iconUrl = `https://openweathermap.org/img/w/${data.daily[i].weather[0].icon}.png`
+                        const x = createWeatherHTML(date, iconUrl, data.daily[i].temp.day, data.daily[i].wind_speed, data.daily[i].humidity)
+                        document.getElementById("day" + i).appendChild(x)
+                    }
 
                 });
         });
 })
 
 // creating a function that will be used inside the function above with the help of tutor 
-// function createWeatherHTML(temp, wind, humidity) {
+function createWeatherHTML(date, icon, temp, wind, humidity) {
 
-//     const ul = document.createElement("ul");
-//     const liTemp = document.createElement("li");
-//     const liWind = document.createElement("li");
-//     const liHumidity = document.createElement("li");
+    const ul = document.createElement("ul");
+    ul.classList.add("forecast");
+    const liDate = document.createElement("li");
+    const liIcon = document.createElement("img");
+    const liTemp = document.createElement("li");
+    const liWind = document.createElement("li");
+    const liHumidity = document.createElement("li");
 
-//     liTemp.innerText = temp;
-//     liWind.innerText = wind;
-//     liHumidity.innerText = humidity;
+    liDate.innerText = date;
+    liIcon.setAttribute("src", icon);
+    liTemp.innerText = "Temperature: " + temp + " °F";
+    liWind.innerText = "Wind: " + wind + " MPH";
+    liHumidity.innerText = "Humidity: " + humidity +" %";
 
-//     ul.appendChild(liTemp);
-//     ul.appendChild(liWind);
-//     ul.appendChild(liHumidity);
+    ul.appendChild(liDate);
+    ul.appendChild(liIcon);
+    ul.appendChild(liTemp);
+    ul.appendChild(liWind);
+    ul.appendChild(liHumidity);
 
-//     return ul;
-// }
+    return ul;
+}
+
+// save searched cities in the search history here
+function saveSearch(city) {
+    var history = JSON.parse(localStorage.getItem("history"));
+    if(history==null){
+        history=[];
+    }
+    history.push(city);
+    localStorage.setItem("history", JSON.stringify(history));
+    
+}
+
+                // don't forget to indicate the uvi condition adding background color
+                    // if(data.current.uvi <= 3){
+                    //     document.getElementById("decimal").addClass("favorable");
+                    // } else if (data.current.uvi >3 && data.current.uvi <= 5){
+                    //     document.getElementById("decimal").addClass("moderate");
+                    // } else {
+                    //     document.getElementById("decimal").addClass("severe");
+                    // };

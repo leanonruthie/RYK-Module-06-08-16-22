@@ -24,8 +24,8 @@
     </section>
     <section class="right-top">
         <h2 id="currentCity">Today's Weather Info for Selected City</h2>
+        <img id="icon" src="" />
         <h3 id="today">[Today's Date]</h3>
-        <img id="icon" src=""/> 
         <ul id="properties">
             <li>Temperature: <span id="fahrenheit">[TBA]</span></li>
             <li>Wind: <span id="mph">[TBA]</span></li>
@@ -33,19 +33,21 @@
             <li>UV Index: <span id="decimal">[TBA]</span></li>
         </ul>
     </section>
-   
+
     <section class="right-bottom">
         <h2>5-Day Forecast:</h2>
-        <ul class="forecast">
-            <li><span class="forecast-day"></span></li>
-            <img class="icons" src=""/> 
-            <li><span class="forecast-temp"></span></li>
-            <li><span class="forecast-windspeed"></span></li>
-            <li><span class="forecast-humidity"></span></li>
-        </ul>
-        
+        <section id="day0">
+        </section>
+        <section id="day1">
+        </section>
+        <section id="day2">
+        </section>
+        <section id="day3">
+        </section>
+        <section id="day4">
+        </section>
     </section>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="./Develop/script.js"></script>
 </body>
