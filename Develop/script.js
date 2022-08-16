@@ -34,6 +34,8 @@ document.getElementById("search").addEventListener("click", () => {
                     // double check if the info appears
                     console.log(data);
 
+                    // WEATHER TODAY STARTS HERE
+
                     // grab input and make sure it's in uppercase for aesthetic purposes
                     document.getElementById("currentCity").innerText = city.toUpperCase();
 
@@ -50,20 +52,24 @@ document.getElementById("search").addEventListener("click", () => {
                     document.getElementById("percent").innerText = data.current.humidity + " %";
                     document.getElementById("decimal").innerText = data.current.uvi;
 
-                    // create a loop in which these items will be grabbed until the 5th day
-                    for (i = 0; i < 5; i++) {
+                    uvColor(data.current.uvi);
+
+                    // WEATHER FOR THE NEXT 5 DAYS SELECTS AND REPLACES PROPER PARAMETERS FROM OUTSIDE SAMPLE FUNCTION CREATEWEATHERFORECAST()
+
+                    // create a loop in which these items will be grabbed until the 5th day and to exclude today manipulate integer to i=1
+                    for (i = 1; i < 6; i++) {
                         var date = moment.unix(data.daily[i].dt).format("MM/DD/YYYY");
                         var iconUrl = `https://openweathermap.org/img/w/${data.daily[i].weather[0].icon}.png`
-                        const x = createWeatherHTML(date, iconUrl, data.daily[i].temp.day, data.daily[i].wind_speed, data.daily[i].humidity)
-                        document.getElementById("day" + i).appendChild(x)
+                        const y = createWeeklyForecast(date, iconUrl, data.daily[i].temp.day, data.daily[i].wind_speed, data.daily[i].humidity)
+                        document.getElementById("day" + i).appendChild(y)
                     }
 
                 });
         });
 })
 
-// creating a function that will be used inside the function above with the help of tutor 
-function createWeatherHTML(date, icon, temp, wind, humidity) {
+// creating a function that will be used inside the very top function with the help of tutor 
+function createWeeklyForecast(date, icon, temp, wind, humidity) {
 
     const ul = document.createElement("ul");
     ul.classList.add("forecast");
@@ -77,7 +83,7 @@ function createWeatherHTML(date, icon, temp, wind, humidity) {
     liIcon.setAttribute("src", icon);
     liTemp.innerText = "Temperature: " + temp + " °F";
     liWind.innerText = "Wind: " + wind + " MPH";
-    liHumidity.innerText = "Humidity: " + humidity +" %";
+    liHumidity.innerText = "Humidity: " + humidity + " %";
 
     ul.appendChild(liDate);
     ul.appendChild(liIcon);
@@ -88,22 +94,25 @@ function createWeatherHTML(date, icon, temp, wind, humidity) {
     return ul;
 }
 
-// save searched cities in the search history here
+// save searched cities for the search history function here needs to run inside the very top function
 function saveSearch(city) {
     var history = JSON.parse(localStorage.getItem("history"));
-    if(history==null){
-        history=[];
+    if (history == null) {
+        history = [];
     }
     history.push(city);
     localStorage.setItem("history", JSON.stringify(history));
-    
+
 }
 
-                // don't forget to indicate the uvi condition adding background color
-                    // if(data.current.uvi <= 3){
-                    //     document.getElementById("decimal").addClass("favorable");
-                    // } else if (data.current.uvi >3 && data.current.uvi <= 5){
-                    //     document.getElementById("decimal").addClass("moderate");
-                    // } else {
-                    //     document.getElementById("decimal").addClass("severe");
-                    // };
+// don't forget to indicate the uvi condition adding background color and run inside the very top function
+function uvColor() {
+    let z = "";
+    if (z > 5) {
+        decimal.style.backgroundColor = "green";
+    } else if (z >= 3 && decimal <= 5) {
+        decimal.style.backgroundColor = "yellow";
+    } else {
+        decimal.style.backgroundColor = "red";
+    };
+}

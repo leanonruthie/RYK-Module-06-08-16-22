@@ -25,18 +25,8 @@ ul {
     padding-left: 0;
 }
 
-.favorable{
-    background-color: green;
-}
-.moderate{
-    background-color: orange;
-}
-.severe{
-    background-color: red;
-}
-
 .forecast{
-    padding-top: 1%;
+    padding-top: 11px;
     display:inline-block;
     background-color: lightsteelblue;
     width:200px;
