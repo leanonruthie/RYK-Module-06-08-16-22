@@ -1,13 +1,15 @@
 // retrieve the key
 const APIKey = "11d1e6ff7e13f1978dedaf38b5bb0ab6"
+var city = '';
 
 // What happens when we click search after putting exact city name?
 
 // Clicking search button runs the below function
-document.getElementById("search").addEventListener("click", () => {
+document.getElementById("search").addEventListener("click", searchCity);
 
+function searchCity(){
+city = document.getElementById("exactCity").value;
     // this is the input being searched
-    var city = document.getElementById("exactCity").value;
     saveSearch(city);
     // double check the input is grabbed
     console.log(city);
@@ -66,7 +68,7 @@ document.getElementById("search").addEventListener("click", () => {
 
                 });
         });
-})
+}
 
 // creating a function that will be used inside the very top function with the help of tutor 
 function createWeeklyForecast(date, icon, temp, wind, humidity) {
@@ -105,14 +107,34 @@ function saveSearch(city) {
 
 }
 
+// create a list search history list
+function searchHistory(){
+    var searchArray = JSON.parse(localStorage.getItem("history"));
+    if (searchArray == null) {
+        searchArray = [];
+    }
+    for (let i = 0; i < searchArray.length; i++) {
+        const pastCity=document.createElement("button");
+        pastCity.innerText = searchArray[i];
+        document.getElementById("searchHistory").appendChild(pastCity);
+        pastCity.addEventListener("click", (event)=>{
+            console.log(event.target.innerText);
+        })
+    }
+
+    console.log(searchArray);
+}
+
+searchHistory();
+
 // don't forget to indicate the uvi condition adding background color and run inside the very top function
-function uvColor() {
-    let z = "";
+function uvColor(z) {
     if (z > 5) {
-        decimal.style.backgroundColor = "green";
+        decimal.style.backgroundColor = "red";
     } else if (z >= 3 && decimal <= 5) {
         decimal.style.backgroundColor = "yellow";
     } else {
-        decimal.style.backgroundColor = "red";
+        decimal.style.backgroundColor = "green";
     };
 }
+
