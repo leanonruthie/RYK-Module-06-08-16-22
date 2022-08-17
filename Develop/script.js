@@ -7,10 +7,17 @@ var city = '';
 // Clicking search button runs the below function
 document.getElementById("search").addEventListener("click", searchCity);
 
-function searchCity(){
-city = document.getElementById("exactCity").value;
-    // this is the input being searched
+function searchCity() {
+    city = document.getElementById("exactCity").value;
+    // Instructor taught me how to clean up existing massive code here with refactor > extract function to global scope so the button would work
+    searchWithCityValue();
+}
+
+function searchWithCityValue() {
     saveSearch(city);
+
+    searchHistory();
+
     // double check the input is grabbed
     console.log(city);
 
@@ -37,12 +44,11 @@ city = document.getElementById("exactCity").value;
                     console.log(data);
 
                     // WEATHER TODAY STARTS HERE
-
                     // grab input and make sure it's in uppercase for aesthetic purposes
                     document.getElementById("currentCity").innerText = city.toUpperCase();
 
                     // Tutor taught me to use string interpolation for the icon here
-                    var iconUrl = `https://openweathermap.org/img/w/${data.current.weather[0].icon}.png`
+                    var iconUrl = `https://openweathermap.org/img/w/${data.current.weather[0].icon}.png`;
                     document.getElementById("icon").src = iconUrl;
 
                     // moment().format() was returning the wrong date; asked around class and got this hint and linked to moment.js in html
@@ -57,13 +63,12 @@ city = document.getElementById("exactCity").value;
                     uvColor(data.current.uvi);
 
                     // WEATHER FOR THE NEXT 5 DAYS SELECTS AND REPLACES PROPER PARAMETERS FROM OUTSIDE SAMPLE FUNCTION CREATEWEATHERFORECAST()
-
                     // create a loop in which these items will be grabbed until the 5th day and to exclude today manipulate integer to i=1
                     for (i = 1; i < 6; i++) {
                         var date = moment.unix(data.daily[i].dt).format("MM/DD/YYYY");
-                        var iconUrl = `https://openweathermap.org/img/w/${data.daily[i].weather[0].icon}.png`
-                        const y = createWeeklyForecast(date, iconUrl, data.daily[i].temp.day, data.daily[i].wind_speed, data.daily[i].humidity)
-                        document.getElementById("day" + i).appendChild(y)
+                        var iconUrl = `https://openweathermap.org/img/w/${data.daily[i].weather[0].icon}.png`;
+                        const y = createWeeklyForecast(date, iconUrl, data.daily[i].temp.day, data.daily[i].wind_speed, data.daily[i].humidity);
+                        document.getElementById("day" + i).appendChild(y);
                     }
 
                 });
@@ -108,24 +113,26 @@ function saveSearch(city) {
 }
 
 // create a list search history list
-function searchHistory(){
+function searchHistory() {
+    document.getElementById("searchHistory").innerHTML = "";
     var searchArray = JSON.parse(localStorage.getItem("history"));
     if (searchArray == null) {
         searchArray = [];
     }
     for (let i = 0; i < searchArray.length; i++) {
-        const pastCity=document.createElement("button");
+        const pastCity = document.createElement("button");
         pastCity.innerText = searchArray[i];
         document.getElementById("searchHistory").appendChild(pastCity);
-        pastCity.addEventListener("click", (event)=>{
+        pastCity.addEventListener("click", (event) => {
+            // tutor taught me this cool button calling itself
             console.log(event.target.innerText);
+            city = event.target.innerText;
+            // this is the input being searched
+            searchWithCityValue();
         })
     }
-
     console.log(searchArray);
 }
-
-searchHistory();
 
 // don't forget to indicate the uvi condition adding background color and run inside the very top function
 function uvColor(z) {
