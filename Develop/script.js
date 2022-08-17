@@ -22,7 +22,7 @@ function searchWithCityValue() {
     console.log(city);
 
     // This doc doesn't have autocomplete or anything so upon searching exact city name it will grab ONE appropriate city result for now set in limit=1
-    var queryURL = "http://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=1&appid=" + APIKey;
+    var queryURL = "https://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=1&appid=" + APIKey;
 
     // What we learned and been using to fetch data from the above URL
     fetch(queryURL)
