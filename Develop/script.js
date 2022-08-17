@@ -68,6 +68,7 @@ function searchWithCityValue() {
                         var date = moment.unix(data.daily[i].dt).format("MM/DD/YYYY");
                         var iconUrl = `https://openweathermap.org/img/w/${data.daily[i].weather[0].icon}.png`;
                         const y = createWeeklyForecast(date, iconUrl, data.daily[i].temp.day, data.daily[i].wind_speed, data.daily[i].humidity);
+                        document.getElementById("day" + i).innerHTML = "";
                         document.getElementById("day" + i).appendChild(y);
                     }
 
