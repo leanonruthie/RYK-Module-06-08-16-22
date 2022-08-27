@@ -30,5 +30,5 @@ THEN I can click on any of the past buttons to see their current condition follo
   <img src="./Assets/sacramento.png" alt="final_shot"/>
 
   ## URL
-  * https://github.com/leanonruthie/RYK-Module-06-08-16-22.git
-  * https://leanonruthie.github.io/RYK-Module-06-08-16-22/
+  * https://github.com/leanonruthie/Weather-Dashboard.git
+  * https://leanonruthie.github.io/Weather-Dashboard/
