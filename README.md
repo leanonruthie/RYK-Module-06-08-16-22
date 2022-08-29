@@ -23,11 +23,11 @@ THEN I can click on any of the past buttons to see their current condition follo
 ## Screenshot
 
  1. Before clicking search
-  <img src="./Assets/127.0.0.1_5500_index.html_exactCity=san+diego (2).png" alt="first_shot"/>
- 2. Adding another search
-  <img src="./Assets/127.0.0.1_5500_index.html_exactCity=san+diego (3).png" alt="second_shot"/>
+    <img src="./Assets/127.0.0.1_5500_index.html_exactCity=san+diego (2).png" alt="first_shot"/>
+ 1. Adding another search
+    <img src="./Assets/127.0.0.1_5500_index.html_exactCity=san+diego (3).png" alt="second_shot"/>
  3. Going back to one of the searches from current search
-  <img src="./Assets/sacramento.png" alt="final_shot"/>
+    <img src="./Assets/sacramento.png" alt="final_shot"/>
 
   ## URL
   * https://github.com/leanonruthie/Weather-Dashboard.git
