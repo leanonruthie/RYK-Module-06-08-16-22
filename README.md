@@ -2,7 +2,7 @@
 
 ## User Story
 
-```
+```md
 AS A coding student
 I WANT to learn how to fetch free data from other URLs with a free API key, in this instance, specifically, Open Weather API
 SO THAT I can display Open Weather API data in my own site and store search history to return to
@@ -10,7 +10,7 @@ SO THAT I can display Open Weather API data in my own site and store search hist
 
 ## Acceptance Criteria
 
-```
+```md
 GIVEN a simple input field
 WHEN I insert an exact city name
 THEN I am able to browse its current weather followed by its 5-day forecast 
